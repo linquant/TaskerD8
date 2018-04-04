@@ -1,0 +1,14 @@
+{
+  "name": "drupal/tasker",
+  "type": "drupal-module",
+  "description": "Allows the creation of spots and affection to a user. The user receives an e-mail notification of the remaining tasks to be done.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/tasker",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/tasker",
+    "source": "http://cgit.drupalcode.org/tasker"
+  },
+  "require": { }
+}

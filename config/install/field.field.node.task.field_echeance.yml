@@ -1,0 +1,23 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_echeance
+    - node.type.task
+  module:
+    - datetime
+id: node.task.field_echeance
+field_name: field_echeance
+entity_type: node
+bundle: task
+label: Echeance
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    default_date_type: relative
+    default_date: +2days
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,23 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.task
+  module:
+    - text
+_core:
+  default_config_hash: lxJynbEXpdVXvLzL-l_x7eKroah429iyjlEv_aBXhx0
+id: node.task.body
+field_name: body
+entity_type: node
+bundle: task
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text

@@ -1,0 +1,59 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.node.task.body
+    - field.field.node.task.field_echeance
+    - field.field.node.task.field_etat
+    - field.field.node.task.field_responsable
+    - node.type.task
+  module:
+    - datetime
+    - options
+    - text
+    - user
+_core:
+  default_config_hash: tDFyp5YiRzYDMKxxJYyRqaETe8LSjdEL0CW7AqouiGw
+id: node.task.default
+targetEntityType: node
+bundle: task
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_echeance:
+    weight: 3
+    label: inline
+    settings:
+      future_format: 'Dans @interval '
+      past_format: 'passée depuis le @interval '
+      granularity: 2
+    third_party_settings: {  }
+    type: datetime_time_ago
+    region: content
+  field_etat:
+    type: list_default
+    weight: 2
+    region: content
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+  field_responsable:
+    weight: 1
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    type: author
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

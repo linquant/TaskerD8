@@ -1,0 +1,5 @@
+name: 'tasker'
+type: module
+description: 'Allows the creation of spots and affection to a user. The user receives an e-mail notification of the remaining tasks to be done.'
+core: 8.x
+package: 'Custom'
