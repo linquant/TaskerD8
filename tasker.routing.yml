@@ -1,7 +1,1 @@
-tasker.tasker_controller_list_task:
-  path: 'task/list_task'
-  defaults:
-    _controller: '\Drupal\tasker\Controller\TaskerController::list_task'
-    _title: 'list_task'
-  requirements:
-    _permission: 'access content'
+
