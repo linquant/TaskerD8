@@ -3,7 +3,6 @@ namespace Drupal\tasker\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\node\Entity\Node;
-
 use Drupal\user\Entity\User;
 
 
@@ -14,18 +13,11 @@ class TaskerController extends ControllerBase
 {
 
 
-    /**
-     *
-     * @return array
-     *
-     */
     public function list_task()
     {
 
         //On récupére les taches en cours ou ouverte
         $nodes = $this->todo();
-
-
 
         //classe les taches dans un tableaux en fonction du mail du responsable de la tache
 
@@ -33,11 +25,23 @@ class TaskerController extends ControllerBase
 
         foreach ($nodes as $index => $node) {
 
-          //On charge les utilisateurs cocernés
+          //On charge les utilisateurs concernés
             $user = User::load($node->field_responsable->target_id);
 
           //tableau classé
-          $liste_tache[$user->mail->value].= $node->title->value." -- tache = ".$node->field_etat->value."\r\n";
+
+            if (isset($liste_tache[$user->mail->value])) {
+
+            //  \Drupal::logger('mail-log')->debug('Concatenation de '. $user->mail->value);
+                $liste_tache[$user->mail->value] .= $node->title->value . " -- tache = " . $node->field_etat->value ."-- Echéance le: ".$node->field_echeance->value. "\r\n";
+
+            } else {
+               
+            //    \Drupal::logger('mail-log')->debug('Création de '.$user->mail->value);
+
+                $liste_tache[$user->mail->value] = $node->title->value . " -- tache = " . $node->field_etat->value ."-- Echéance le: ".$node->field_echeance->value . "\r\n";
+
+            }
 
          }
 
@@ -67,6 +71,7 @@ class TaskerController extends ControllerBase
 
         $condition_and = $query->andConditionGroup();
         $condition_and->condition('field_etat', array('ouvert', 'encours'), 'IN');
+        $condition_and->condition('field_echeance',  date("Y-m-d"), '<');
 
 
         //$query->condition('field_echeance',  date("Y-m-d"), '<');
@@ -76,8 +81,9 @@ class TaskerController extends ControllerBase
         foreach ($results as $index => $result) {
 
             $node[$index] = Node::load($result);
-
         }
+
+
         return $node;
     }
 
